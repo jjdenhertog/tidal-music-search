@@ -1,9 +1,9 @@
 import MusicSearch, { filterOutWords, Track } from "@jjdenhertog/music-search";
-import { UserCredentials } from "./types/TidalCredentials";
 import { TidalMusicSearchApproach } from "./types/TidalMusicSearchApproach";
 import { TidalMusicSearchConfig } from "./types/TidalMusicSearchConfig";
 import { TidalMusicSearchTrack } from "./types/TidalMusicSearchTrack";
 import { TidalTrack } from "./types/TidalTrack";
+import { UserCredentials } from "./types/UserCredentials";
 import { TidalAPI } from "./utils/TidalAPI";
 import { getAlbumTracks } from "./utils/getAlbumTracks";
 import { searchForAlbum } from "./utils/searchForAlbum";
@@ -23,8 +23,13 @@ export class TidalMusicSearch {
     private readonly _config: TidalMusicSearchConfig
     private _cache: { id: string, result: TidalTrack[] }[] = []
 
-    public constructor(config: TidalMusicSearchConfig = {}) {
+    public constructor(config: TidalMusicSearchConfig) {
         this._config = config;
+
+        // Set the Tidal credentials
+        const tidalAPI = TidalAPI.getInstance()
+        tidalAPI.clientId = config.clientId
+        tidalAPI.clientSecret = config.clientSecret
     }
 
     public set user(user: UserCredentials | undefined) {

@@ -1,7 +1,6 @@
 import { compareTitles } from "@jjdenhertog/music-search";
 import { TidalAPI } from "./TidalAPI";
 
-
 type FoundAlbumWithMatching = {
     id: string,
     title: string,
@@ -19,7 +18,6 @@ type FoundAlbumWithMatching = {
         }
     }
 }
-
 
 // eslint-disable-next-line unicorn/no-object-as-default-parameter
 export async function searchForAlbum(artist: string, album: string, artistMatch: { contain: boolean; similarity: number; } = { similarity: 0.6, contain: true }) {

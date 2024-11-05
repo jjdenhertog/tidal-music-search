@@ -4,14 +4,22 @@ import qs from "qs";
 import { TidalTrack } from "../types";
 import { TidalAlbum } from "../types/TidalAlbum";
 import { AuthenticateResponse, operations, TidalComponents } from "../types/TidalAPI";
-import { UserCredentials } from "../types/TidalCredentials";
+import { UserCredentials } from "../types/UserCredentials";
 import tidalApiRequest from "./tidalApiRequest";
+
+export type TidalAPIProps = {
+    clientId: string,
+    clientSecret: string
+}
 
 export class TidalAPI {
 
     private _access_token?: string;
     private _expires_at?: number;
     private _user?: UserCredentials
+
+    private _clientId?: string | undefined;
+    private _clientSecret?: string | undefined;
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     private constructor() { }
@@ -26,11 +34,26 @@ export class TidalAPI {
         return this._instance;
     }
 
+    //////////////////////////////////////////
+    // Getters & Setters
+    //////////////////////////////////////////
     public set user(user: UserCredentials | undefined) {
         this._user = user;
     }
     public get user() {
         return this._user
+    }
+    public get clientSecret(): string | undefined {
+        return this._clientSecret;
+    }
+    public set clientSecret(value: string | undefined) {
+        this._clientSecret = value;
+    }
+    public get clientId(): string | undefined {
+        return this._clientId;
+    }
+    public set clientId(value: string | undefined) {
+        this._clientId = value;
     }
 
     public async authenticate() {
@@ -49,11 +72,11 @@ export class TidalAPI {
         ///////////////////////////////////////////
         // Initiate the client
         ///////////////////////////////////////////
-        if (typeof process.env.TIDAL_API_CLIENT_ID != 'string')
-            throw new Error(`Environment variable TIDAL_API_CLIENT_ID is missing`)
+        if (typeof this._clientId != 'string')
+            throw new Error(`Client ID is missing`)
 
-        if (typeof process.env.TIDAL_API_CLIENT_SECRET != 'string')
-            throw new Error(`Environment variable TIDAL_API_CLIENT_SECRET is missing`)
+        if (typeof this._clientSecret != 'string')
+            throw new Error(`Client Secret is missing`)
 
         const tokenUrl = 'https://auth.tidal.com/v1/oauth2/token';
         const authHeader = Buffer.from(`${process.env.TIDAL_API_CLIENT_ID}:${process.env.TIDAL_API_CLIENT_SECRET}`).toString('base64');
@@ -81,7 +104,6 @@ export class TidalAPI {
                 throw new Error(`Failed authenticating with the Tidal API`);
             }
         }
-
     }
 
     public async search(query: string, countryCode: string = 'NL'): Promise<TidalTrack[]> {
