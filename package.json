@@ -1,7 +1,7 @@
 {
     "name": "@jjdenhertog/tidal-music-search",
-    "version": "1.0.0",
-    "description": "Library to find tracks in your Tidal Library",
+    "version": "1.0.2",
+    "description": "Library to find tracks in Tidal",
     "keywords": [
         "tidal",
         "music",
