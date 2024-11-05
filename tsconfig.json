@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "ES2020", // Keeps compatibility with modern JavaScript
+        "module": "CommonJS", // Preferred for Node.js compatibility
+        "moduleResolution": "Node",
+        "lib": [ "ES2020" ], // Ensures standard library features are supported
+        "declaration": true, // Generates .d.ts files for TypeScript support in other projects
+        "outDir": "./dist", // Output directory for compiled files
+        "rootDir": "./src", // Source files directory
+        "strict": true, // Enables strict type-checking
+        "esModuleInterop": true, // Allows interop with CommonJS modules
+        "skipLibCheck": true, // Skips checking of declaration files for faster compilation
+        "forceConsistentCasingInFileNames": true // Enforces consistent casing for imports
+    },
+    "include": [ "src" ], // Includes only source files
+    "exclude": [ "node_modules", "dist", "**/*.test.ts" ] // Excludes unnecessary files
+}
