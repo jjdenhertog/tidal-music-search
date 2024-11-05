@@ -47,12 +47,7 @@ const tidalMusicSearch = new TidalMusicSearch({
 });
 
 const searchItems: TidalMusicSearchTrack[] = [
-  {
-    id: '125',
-    title: 'Billie Jean',
-    album: 'Thriller',
-    artists: ['Michael Jackson'],
-  },
+{ id: '125', title: 'Billie Jean', album: 'Thriller', artists: ['Michael Jackson']},
   // Add more tracks as needed
 ];
 
@@ -69,6 +64,26 @@ searchTracks();
 ```
 
 In this example, the `search` method is used to find tracks on Tidal that match the specified criteria.
+
+
+### What is with the ID while searching?
+
+You might notice that the search query must contain an ID
+```typescript
+const searchItems: TidalMusicSearchTrack[] = [
+  { id: '125', title: 'Billie Jean', album: 'Thriller', artists: ['Michael Jackson']},
+  // Add more tracks as needed
+];
+
+```
+
+Most of the times when you're searching for a track you are doing it to match one library with the other. For example matching Spotify with Plex. The result after searching will contain the original search query including the id and the results. The results are all the tracks matching with the search query. With this approach you can trace back the results more easily.
+
+If you do not need the id for this purpose, you can simply leave it empty: 
+```typescript
+{ id: '', title: 'Billie Jean', album: 'Thriller', artists: ['Michael Jackson']}
+```
+
 
 ## Support
 
