@@ -1,6 +1,6 @@
 {
     "name": "@jjdenhertog/tidal-music-search",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Library to find tracks in Tidal",
     "keywords": [
         "tidal",
@@ -8,7 +8,6 @@
         "search"
     ],
     "homepage": "https://github.com/jjdenhertog/tidal-music-search",
-    "main": "dist/index.js",
     "license": "MIT",
     "scripts": {
         "deploy": "tsc && npm version patch --no-git-tag-version && cp package.json ./dist && cp README.md ./dist && cd dist && npm publish --access public",
@@ -19,7 +18,7 @@
         "npm": ">=10.0.0"
     },
     "dependencies": {
-        "@jjdenhertog/music-search": "^1.0.5",
+        "@jjdenhertog/music-search": "^1.0.6",
         "axios": "^1.7.7",
         "qs": "^6.13.0"
     },
