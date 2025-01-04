@@ -1,6 +1,6 @@
 {
     "name": "@jjdenhertog/tidal-music-search",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Library to find tracks in Tidal",
     "keywords": [
         "tidal",
@@ -18,13 +18,13 @@
         "npm": ">=10.0.0"
     },
     "dependencies": {
-        "@jjdenhertog/music-search": "^1.0.6",
+        "@jjdenhertog/music-search": "^1.0.7",
         "axios": "^1.7.7",
         "qs": "^6.13.0"
     },
     "devDependencies": {
         "@types/node": "^20.3.0",
-        "typescript": ">=4.7.4",
-        "@types/qs": "^6.9.14"
+        "@types/qs": "^6.9.14",
+        "typescript": ">=4.7.4"
     }
 }
